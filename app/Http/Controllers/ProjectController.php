@@ -42,7 +42,7 @@ class ProjectController extends Controller
              'end_date' => 'required'
              ]);
 
-        $project = Project::where('user_id', auth()->id());
+        $project = auth()->user()->projects()->create(request()->all());
 
         flashy()->success('Your project is created successfully!', '/projects/' . $project->id);
 
