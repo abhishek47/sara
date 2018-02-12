@@ -60,7 +60,7 @@
 								<h5 class="font-weight-medium ">Example Member 1</h5>
 								<p class="text-muted">Graphic Designer</p>
 								<p class="mt-0">
-									<a href="#" class="btn btn-sm btn-outline-warning">Assign Task</a> &nbsp;
+									<a href="#newTask" data-toggle="modal" class="btn btn-sm btn-outline-warning">Assign Task</a> &nbsp;
 									<a href="#" class="btn btn-sm btn-outline-primary">Chat</a> &nbsp;
 									<a href="#" class="btn btn-sm btn-outline-danger">Remove</a> &nbsp;
 								</p>
@@ -75,7 +75,7 @@
 								<h5 class="font-weight-medium m-b-0">Example Member 2</h5>
 								<p class="text-muted m-t-0">Front End Designer</p>
 								<p class="mt-0">
-									<a href="#" class="btn btn-sm btn-outline-warning">Assign Task</a> &nbsp;
+									<a href="#newTask" data-toggle="modal" class="btn btn-sm btn-outline-warning">Assign Task</a> &nbsp;
 									<a href="#" class="btn btn-sm btn-outline-primary">Chat</a> &nbsp;
 									<a href="#" class="btn btn-sm btn-outline-danger">Remove</a> &nbsp;
 								</p>
@@ -90,7 +90,7 @@
 								<h5 class="font-weight-medium m-b-0">Example Member 3</h5>
 								<p class="text-muted m-t-0">Backend Developer</p>
 								<p class="mt-0">
-									<a href="#" class="btn btn-sm btn-outline-warning">Assign Task</a> &nbsp;
+									<a href="#newTask" data-toggle="modal" class="btn btn-sm btn-outline-warning">Assign Task</a> &nbsp;
 									<a href="#" class="btn btn-sm btn-outline-primary">Chat</a> &nbsp;
 									<a href="#" class="btn btn-sm btn-outline-danger">Remove</a> &nbsp;
 								</p>
@@ -105,7 +105,7 @@
 								<h5 class="font-weight-medium m-b-0">Example Member 3</h5>
 								<p class="text-muted m-t-0">Tester</p>
 								<p class="mt-0">
-									<a href="#" class="btn btn-sm btn-outline-warning">Assign Task</a> &nbsp;
+									<a href="#newTask" data-toggle="modal" class="btn btn-sm btn-outline-warning">Assign Task</a> &nbsp;
 									<a href="#" class="btn btn-sm btn-outline-primary">Chat</a> &nbsp;
 									<a href="#" class="btn btn-sm btn-outline-danger">Remove</a> &nbsp;
 								</p>
