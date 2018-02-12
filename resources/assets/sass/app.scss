@@ -1,0 +1,111 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800");
+
+
+/*----- Global -----*/
+
+* {
+ 
+   font-family: "Montserrat", sans-serif;
+
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-laravel.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 1);
+    font-weight: 500;
+}
+
+:root {
+  --jumbotron-padding-y: 3rem;
+}
+
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+
+
+footer {
+	  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+
+
+/*----- Member Items -----*/
+
+.member-item {
+  border-bottom: 1px solid #ececec;;
+  margin-bottom:   14px;
+}
+
+
+/*----- Task Items -----*/
+
+.task-item {
+  border-bottom: 1px solid #ececec;;
+  margin-bottom:   14px;
+  padding-bottom: 15px;
+}
+
+.task-item  .task-item-check {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 100%;
+  border: 2px solid #28a745;
+  background-colort: transparent;
+}
+
+
+
+
+
+
