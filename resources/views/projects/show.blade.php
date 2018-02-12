@@ -258,6 +258,14 @@
 	        	<input type="date" name="deadline" class="form-control">
 	        </div>
 
+	         <div class="form-group">
+	        	<label class="font-weight-bold">Depends on </label>
+	        	<select class="form-control">
+	        		<option value="1">Plan the wireframes of website</option>
+	        		<option value="2">Create Graphic Assets</option>
+	        	</select>
+	        </div>
+
 	        <div class="form-group">
 	        	<label class="font-weight-bold">Additional Files</label>
 	        	<input type="file" name="files" class="form-control">
