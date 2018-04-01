@@ -25,6 +25,9 @@ class HomeController extends Controller
     public function index()
     {
         $projects = auth()->user()->projects;
-        return view('home', compact('projects'));
+
+        $assignedProjects = auth()->user()->assignedProjects()->latest()->get();
+
+        return view('home', compact('projects', 'assignedProjects'));
     }
 }

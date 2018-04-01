@@ -13,4 +13,27 @@ class Project extends Model
     {
     	return $this->belongsTo(User::class);
     }
+
+    public function members()
+    {
+    	return $this->hasMany(ProjectUser::class, 'project_id')->where('assigner_id', auth()->id());
+    }
+
+
+    public function tasks()
+    {
+    	return $this->hasMany(Task::class, 'project_id');
+    }
+
+    public function getProgressAttribute()
+    {
+    	return ceil(($this->tasks()->where('completed', 1)->count()/$this->tasks()->count()) * 100);  
+    }
+
+
+    public function getMember($id)
+    {
+    	return ProjectUser::where('project_id', $this->id)->where('user_id', $id)->first();
+    }
+
 }

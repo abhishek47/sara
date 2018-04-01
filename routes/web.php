@@ -25,5 +25,26 @@ Route::post('/projects', 'ProjectController@store')->name('project.store');
 Route::get('/projects/create', 'ProjectController@create')->name('project.create');
 Route::get('/projects/{project}', 'ProjectController@show')->name('project.show');
 
+Route::get('/projects/{project}/leave', 'ProjectController@leave')->name('project.leave');
+
+Route::get('/projects/{project}/destroy', 'ProjectController@destroy')->name('project.destroy');
+
 
 Route::post('/projects/{project}/members', 'ProjectUsersController@store');
+
+Route::get('/members/{member}/remove', 'ProjectUsersController@destroy');
+
+
+Route::get('/projects/{project}/tasks', 'TasksController@index');
+
+
+Route::post('/projects/{project}/tasks', 'TasksController@store');
+
+
+Route::get('/projects/{project}/members/{user}/tasks', 'TasksController@get');
+
+
+
+Route::get('/tasks/{task}/remove', 'TasksController@destroy');
+
+Route::get('/tasks/{task}/toggle', 'TasksController@toggle');

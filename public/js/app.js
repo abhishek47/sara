@@ -13807,7 +13807,16 @@ window.Vue = __webpack_require__(36);
 Vue.component('example-component', __webpack_require__(39));
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+
+  methods: {
+    completeTask: function completeTask(id) {
+      $('#task-check-' + id).html('<i class="fa fa-check"></i>');
+    },
+    incompleteTask: function incompleteTask(id) {
+      $('#task-check-' + id).html('');
+    }
+  }
 });
 
 /***/ }),

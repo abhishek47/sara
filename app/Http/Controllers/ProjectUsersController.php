@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Models\ProjectUser;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
-class ProjectUserController extends Controller
+class ProjectUsersController extends Controller
 {
 
     /**
@@ -46,13 +48,19 @@ class ProjectUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Project $project, Request $request)
     {
         $user = User::where('email', $request->get('member_email'))->first();
 
-        ProjectUser::create([ 'project_id' => $project->id, 'user_id' => $user->id, 'assigner_id' => auth()->id(), 'role' => $request->get('member_role') ]);
+        if($user)
+        {
+             ProjectUser::create([ 'project_id' => $project->id, 'user_id' => $user->id, 'assigner_id' => auth()->id(), 'role' => $request->get('member_role') ]);
 
-        flashy()->success( $user->name . ' is added to project.', '/project/' . $project->id);
+             flashy()->success( $user->name . ' is added to project.', '/project/' . $project->id);
+        } else {
+            flashy()->error( $request->get('member_email') . ' is not a valid user.');
+        }
+       
 
         return back();
     }
@@ -97,8 +105,18 @@ class ProjectUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(ProjectUser $member)
+    {   
+        $user = $member->user;
+        $project = $member->project;
+
+        Task::where('member_id', $user->id)->delete();
+
+        $member->delete();
+
+         flashy()->success( $user->name . ' is removed from project.', '/project/' . $project->id);
+
+         return back();
+
     }
 }

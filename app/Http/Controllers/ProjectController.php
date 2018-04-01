@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\ProjectUser;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -71,7 +72,22 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('projects.show', compact('project'));
+        $tasks = $project->tasks()->where('member_id', auth()->id())->get();
+
+        if($project->user_id == auth()->id())
+        {
+            $member = new ProjectUser;
+
+            $member->user_id = auth()->id();
+
+            $member->role = 'Project Owner';
+        } else {
+            
+            $member = ProjectUser::where('project_id', $project->id)->where('user_id', auth()->id())->first();
+        }
+
+
+        return view('projects.show', compact('project', 'tasks', 'member'));
     }
 
     /**
@@ -105,6 +121,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        flashy()->success('Your project is deleted successfully!');
+
+        return redirect('/home');
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container py-4">
+   <!-- <div class="container py-4">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card card-default box-shadow">
@@ -33,19 +33,61 @@
 
              
         </div>
-    </div>
+    </div> -->
 
 
 
     <div class="container">
-        <h2 class="py-3 float-left">My Projects</h2>
+        <h2 class="pb-3 mt-5 float-left">My Projects</h2>
 
         <a href="{{ route('project.create') }}
-        " class="btn btn-success float-right mt-3"><i class="far fa-plus-square"></i> New Project</a>
+        " class="btn btn-danger float-right mt-5"><i class="far fa-plus-square"></i> New Project</a>
         
         <div class="clearfix"></div>
         <div class="row">
           @foreach($projects as $project)
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                
+                <div class="card-body">
+                  <h5><a href="{{ '/projects/' . $project->id }}" class="text-dark">{{ $project->title }}</a></h5>
+                    @if(auth()->user()->id == $project->user_id)
+                        <span class="text-success font-weight-bold">&bull; Owned</span>
+                    @else
+                        <span class="text-warning font-weight-bold">&bull; Assigned</span>
+                    @endif
+                    <div class="progress mt-2">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: {{$project->progress}}%;" aria-valuenow="{{$project->progress}}" aria-valuemin="0" aria-valuemax="100">{{$project->progress}}%</div>
+                    </div>
+                  <p class="card-text pt-3">{{ substr($project->description, 0, 40) }}..</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{{ '/projects/' . $project->id }}" class="btn btn-sm btn-outline-secondary">Manage</a>
+                  
+                      @if(auth()->user()->id == $project->user_id)
+                         <a href="/projects/{{ $project->id }}/destroy" class="btn btn-sm btn-outline-secondary">Discard</a>
+                      @else
+                         <a href="/projects/{{ $project->id }}/leave" class="btn btn-sm btn-outline-secondary">Leave</a>
+                      @endif
+                    </div>
+                    <small class="text-muted">{{ $project->created_at->format('d M Y') }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+        @endforeach    
+            
+        </div>
+
+
+
+        <h2 class="py-3 float-left">Assigned Projects</h2>
+
+        
+        <div class="clearfix"></div>
+        <div class="row">
+          @foreach($assignedProjects as $project)
+           <?php $project = $project->project; ?> 
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
                 
@@ -63,9 +105,14 @@
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <a href="{{ '/projects/' . $project->id }}" class="btn btn-sm btn-outline-secondary">Manage</a>
-                      <a href="/project/12" class="btn btn-sm btn-outline-secondary">Leave</a>
+                  
+                      @if(auth()->user()->id == $project->user_id)
+                         <a href="/projects/{{ $project->id }}/destroy" class="btn btn-sm btn-outline-secondary">Discard</a>
+                      @else
+                         <a href="/projects/{{ $project->id }}/leave" class="btn btn-sm btn-outline-secondary">Leave</a>
+                      @endif
                     </div>
-                    <small class="text-muted">9 mins</small>
+                    <small class="text-muted">{{ $project->created_at->format('d M Y') }}</small>
                   </div>
                 </div>
               </div>

@@ -73,7 +73,6 @@
         </nav>
 
         <main class="">
-            @include('flashy::message')
             @yield('content')
         </main>
 
@@ -92,6 +91,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+@include('flashy::message')
 
     <script src="{{ asset('js/datedropper.min.js') }}"></script>
 
