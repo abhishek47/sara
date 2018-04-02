@@ -157,6 +157,7 @@
 							<div style="flex: 3" class="mt-2 ml-3">
 								<h5 class="font-weight-medium ">{{ $member->user->name }} ( {{ $project->tasks()->where('member_id', $member->user->id)->where('completed', 0)->count() }} )</h5>
 
+								<p class="text-muted mb-1">{{ $member->email }}</p>
 			                   
 								<p class="text-muted mb-0">{{ $member->role }}</p>
 
