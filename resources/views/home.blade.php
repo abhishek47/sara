@@ -45,6 +45,7 @@
         
         <div class="clearfix"></div>
         <div class="row">
+          @if(count($projects))
           @foreach($projects as $project)
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
@@ -75,7 +76,12 @@
                 </div>
               </div>
             </div>
-        @endforeach    
+        @endforeach  
+        @else
+
+          <p>No projects found!</p>
+
+        @endif  
             
         </div>
 
@@ -86,6 +92,7 @@
         
         <div class="clearfix"></div>
         <div class="row">
+          @if(count($assignedProjects))
           @foreach($assignedProjects as $project)
            <?php $project = $project->project; ?> 
             <div class="col-md-4">
@@ -117,7 +124,13 @@
                 </div>
               </div>
             </div>
-        @endforeach    
+        @endforeach   
+
+        @else
+
+             <p>No projects assigned to you yet!</p>
+
+        @endif 
             
         </div>
 
