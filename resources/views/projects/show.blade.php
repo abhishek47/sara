@@ -103,15 +103,16 @@
 										<a href="/tasks/{{$task->id}}/toggle" class="task-item-check"></a>
 									@endif
 									<div style="flex: 3;height: 58px;" class="ml-3">
+										<a href="/projects/{{$project->id}}/tasks/{{$task->id}}">
 										@if($task->completed)
-											<h6 class="font-weight-medium mb-0"><del>{{ $task->title }}</del></h6>	
+											<h6 class="font-weight-medium mb-0"><del>{{ $task->title }}</del></h6>
 										@else
 											<h6 class="font-weight-medium mb-0">{{ $task->title }} <small >	
 											
 											 <a href="/tasks/{{$task->id}}/remove" class="btn btn-sm btn-outline-danger">Remove</a> &nbsp; 
 											</small></h6>	
 										@endif
-
+										</a>	
 										<p class=" m-t-0 mb-0"><span class="font-weight-medium">Assigned By :</span> <span class="text-info">{{ $task->head->name }}</span> 
 
 												
@@ -119,7 +120,7 @@
 
 										<small class="text-muted m-t-0">Deadline : {{ $task->deadline}}</small> 
 										@if($task->depends_id != 0 && $task->depends_id != NULL)
-										 | <small class="text-muted m-t-0"> <b>Depends on : <a href="#">{{ $task->dependentTask->title }}</a></b></small>
+										 | <small class="text-muted m-t-0"> <b>Depends on : <a href="/projects/{{$project->id}}/tasks/{{$task->dependentTask->id}}">{{ $task->dependentTask->title }}</a></b></small>
 										@endif	
 										
 										

@@ -98,8 +98,8 @@
                     @else
                         <span class="text-warning font-weight-bold">&bull; Assigned</span>
                     @endif
-                    <div class="progress mt-2">
-                      <div class="progress-bar bg-success" role="progressbar" style="width: 14%;" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100">14%</div>
+                     <div class="progress mt-2">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: {{$project->progress}}%;" aria-valuenow="{{$project->progress}}" aria-valuemin="0" aria-valuemax="100">{{$project->progress}}%</div>
                     </div>
                   <p class="card-text pt-3">{{ substr($project->description, 0, 40) }}..</p>
                   <div class="d-flex justify-content-between align-items-center">

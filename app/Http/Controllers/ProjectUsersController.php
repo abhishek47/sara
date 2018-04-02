@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Task;
 use App\Models\ProjectUser;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -111,6 +112,10 @@ class ProjectUsersController extends Controller
         $project = $member->project;
 
         Task::where('member_id', $user->id)->delete();
+
+        foreach ($member->team as $key => $teammember) {
+            $teammember->delete();
+        }
 
         $member->delete();
 

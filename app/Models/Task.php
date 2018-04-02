@@ -24,4 +24,9 @@ class Task extends Model
     {
     	return $this->belongsTo(Task::class, 'depends_id');
     }
+
+    public function dependings()
+    {
+    	return $this->hasMany(Task::class, 'depends_id');
+    }
 }

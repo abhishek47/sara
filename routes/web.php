@@ -48,3 +48,6 @@ Route::get('/projects/{project}/members/{user}/tasks', 'TasksController@get');
 Route::get('/tasks/{task}/remove', 'TasksController@destroy');
 
 Route::get('/tasks/{task}/toggle', 'TasksController@toggle');
+
+
+Route::get('/projects/{project}/tasks/{task}', 'TasksController@show');

@@ -27,7 +27,7 @@ class TasksController extends Controller
      */
     public function get(Project $project, User $user)
     {
-        $tasks = $project->tasks()->where('member_id', $user->id)->get();
+        $tasks = $project->tasks()->where('member_id', $user->id)->orderBy('deadline', 'ASC')->get();
 
         if($project->user_id == $user->id)
         {
@@ -36,12 +36,16 @@ class TasksController extends Controller
             $member->user_id = $user->id;
 
             $member->role = 'Project Owner';
+
+            $member->project_id = $project->id;
         } else {
             
             $member = ProjectUser::where('project_id', $project->id)->where('user_id', $user->id)->first();
         }
 
-        return view('projects.members.tasks', compact('tasks', 'member', 'project'));
+        $team = ProjectUser::where('project_id', $project->id)->where('assigner_id', $user->id)->get();
+
+        return view('projects.members.tasks', compact('tasks', 'member', 'project', 'team'));
     }
 
     /**
@@ -80,9 +84,10 @@ class TasksController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
-    {
-        //
+    public function show(Project $project, Task $task)
+    {   
+        
+        return view('tasks.show', compact('project', 'task'));
     }
 
     /**
@@ -116,12 +121,17 @@ class TasksController extends Controller
      */
     public function destroy(Task $task)
     {
+        foreach ($task->dependings as $key => $dtask) {
+            $dtask->depends_id  = 0;
+            $dtask->save();
+        }
+    
 
         $task->delete();
 
         flashy()->success( 'The task was removed successfully!');
 
-        return back();
+        return redirect('projects/' . $task->project_id);
     }
 
 

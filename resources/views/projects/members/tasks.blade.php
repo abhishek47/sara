@@ -17,6 +17,10 @@
 				<div style="flex: 3" class="mt-2 ml-3">
 					<h5 class="font-weight-bold m-b-0">{{ $member->user->name }}</h5>
 					<p class="text-muted m-t-0">{{ $member->role }}</p>
+
+					<div class="progress my-1 mb-2">
+			                      <div class="progress-bar bg-success" role="progressbar" style="width: {{$member->own_progress}}%;" aria-valuenow="{{$member->own_progress}}" aria-valuemin="0" aria-valuemax="100">{{$member->own_progress}}%</div>
+			                    </div>
 				</div>
 			</div>
 		</div>
@@ -37,7 +41,9 @@
 			         <div class="clearfix"></div>   
 
 				<div class="card card-default box-shadow">
-					<div class="card-body">
+					<div class="card-body">	
+
+						
 
 						@foreach($tasks as $task)
 							<div class="task-item {{ isset($task->dependentTask) ? ( $task->dependentTask->completed ? '' : 'disabled') : '' }}">
@@ -63,6 +69,7 @@
 
 									@endif
 									<div style="flex: 3;height: 58px;" class="ml-3">
+										<a href="/projects/{{$project->id}}/tasks/{{$task->id}}">
 										@if($task->completed)
 											<h6 class="font-weight-medium mb-0"><del>{{ $task->title }}</del></h6>	
 										@else
@@ -71,6 +78,7 @@
 											 <a href="/tasks/{{$task->id}}/remove" class="btn btn-sm btn-outline-danger">Remove</a> &nbsp; 
 											</small></h6>	
 										@endif
+										</a>
 
 										<p class=" m-t-0 mb-0"><span class="font-weight-medium">Assigned to :</span> <span class="text-info">{{ $task->member->name }}</span> 
 
@@ -79,13 +87,57 @@
 
 										<small class="text-muted m-t-0">Deadline : {{ $task->deadline}}</small> 
 										@if($task->depends_id != 0 && $task->depends_id != NULL)
-										 | <small class="text-muted m-t-0"> <b>Depends on : <a href="#">{{ $task->dependentTask->title }}</a></b></small>
+										 | <small class="text-muted m-t-0"> <b>Depends on : <a href="/projects/{{$project->id}}/tasks/{{$task->dependentTask->id}}">{{ $task->dependentTask->title }}</a></b></small>
 										@endif	
 										
 										
 									</div>
 								</div>
 							</div>
+						@endforeach
+
+						
+
+						
+					</div>
+				</div>
+
+
+				<h4 class="py-3 font-weight-bold float-left">{{ auth()->id() == $member->user->id ? 'My '  : $member->user->name . ' \'s'  }} Team</h4>
+
+
+			         <div class="clearfix"></div>   
+
+				<div class="card card-default box-shadow">
+					<div class="card-body">
+
+					<div class="progress my-1 mb-4">
+			                      <div class="progress-bar bg-success" role="progressbar" style="width: {{$member->progress}}%;" aria-valuenow="{{$member->progress}}" aria-valuemin="0" aria-valuemax="100">{{$member->progress}}%</div>
+			                    </div>
+
+						@foreach($team as $member)
+							<div class="member-item">
+						<div href="#" class="d-flex text-dark">
+							<img src="http://via.placeholder.com/100x100" class="img-circle mt-2" style="width: 60px;height: 60px;border-radius: 100%;">
+
+							<div style="flex: 3" class="mt-2 ml-3">
+								<h5 class="font-weight-medium ">{{ $member->user->name }} ( {{ $project->tasks()->where('member_id', $member->user->id)->where('completed', 0)->count() }} )</h5>
+
+			                   
+								<p class="text-muted mb-0">{{ $member->role }}</p>
+
+								<div class="progress my-1 mb-2">
+			                      <div class="progress-bar bg-success" role="progressbar" style="width: {{$member->progress}}%;" aria-valuenow="{{$member->progress}}" aria-valuemin="0" aria-valuemax="100">{{$member->progress}}%</div>
+			                    </div>
+
+								<p class="mt-0">
+									<a href="/projects/{{ $project->id }}/members/{{ $member->user->id }}/tasks"  class="btn btn-sm btn-outline-warning">View Tasks</a> &nbsp;
+									<!-- <a href="#" class="btn btn-sm btn-outline-primary">Chat</a> &nbsp; -->
+									<a href="/members/{{$member->id}}/remove" class="btn btn-sm btn-outline-danger">Remove</a> &nbsp;
+								</p>
+							</div>
+						</div>
+					 </div>	
 						@endforeach
 
 						

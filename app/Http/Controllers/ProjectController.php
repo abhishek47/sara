@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use App\Models\Project;
 use App\Models\ProjectUser;
 use Illuminate\Http\Request;
@@ -74,6 +75,7 @@ class ProjectController extends Controller
     {
         $tasks = $project->tasks()->where('member_id', auth()->id())->get();
 
+
         if($project->user_id == auth()->id())
         {
             $member = new ProjectUser;
@@ -81,6 +83,8 @@ class ProjectController extends Controller
             $member->user_id = auth()->id();
 
             $member->role = 'Project Owner';
+
+            $member->project_id = $project->id;
         } else {
             
             $member = ProjectUser::where('project_id', $project->id)->where('user_id', auth()->id())->first();

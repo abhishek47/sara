@@ -27,6 +27,11 @@ class Project extends Model
 
     public function getProgressAttribute()
     {
+    	if($this->tasks()->count() == 0)
+    	{
+    		return 0;
+    	}	
+    	
     	return ceil(($this->tasks()->where('completed', 1)->count()/$this->tasks()->count()) * 100);  
     }
 
