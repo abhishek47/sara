@@ -79,7 +79,7 @@
         @endforeach  
         @else
 
-          <p>No projects found!</p>
+          <p class="ml-3">No projects found!</p>
 
         @endif  
             
@@ -128,7 +128,7 @@
 
         @else
 
-             <p>No projects assigned to you yet!</p>
+             <p class="ml-3">No projects assigned to you yet!</p>
 
         @endif 
             
