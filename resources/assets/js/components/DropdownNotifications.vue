@@ -8,10 +8,10 @@
 
                     <div class="dropdown-menu">
 
-                        <a v-for="notification in notifications" :href="notification.data.link" class="dropdown-item" >New Notification <br> <span style="color: grey;">{notification.data.message}</span></a>
+                        <a v-for="notification in notifications" :href="notification.data.link" class="dropdown-item" >New Notification <br> <span style="color: grey;" v-text="notification.data.message"></span></a>
 
                        
-                         <a href="/timeline" class="dropdown-item"><i v-text="notifications.length"></i> Notifications</a>
+                         <a href="/timeline" class="dropdown-item"><i v-text="notifications.length"></i> Notifications - View All</a>
                            
                     </div>       
 

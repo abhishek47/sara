@@ -47481,9 +47481,10 @@ var render = function() {
               _vm._v("New Notification "),
               _c("br"),
               _vm._v(" "),
-              _c("span", { staticStyle: { color: "grey" } }, [
-                _vm._v("{notification.data.message}")
-              ])
+              _c("span", {
+                staticStyle: { color: "grey" },
+                domProps: { textContent: _vm._s(notification.data.message) }
+              })
             ]
           )
         }),
@@ -47495,7 +47496,7 @@ var render = function() {
             _c("i", {
               domProps: { textContent: _vm._s(_vm.notifications.length) }
             }),
-            _vm._v(" Notifications")
+            _vm._v(" Notifications - View All")
           ]
         )
       ],
