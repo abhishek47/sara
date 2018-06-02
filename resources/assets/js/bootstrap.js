@@ -1,7 +1,4 @@
 
-import Pusher from "pusher-js"
-
-import Echo from "laravel-echo"
 
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
@@ -28,13 +25,17 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+import Echo from 'laravel-echo'
 
-
+window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: 'ddf6f87774360fdbabc6y'
-});
+    key: 'ddf6f87774360fdbabc6y',
+    cluster: 'ap2',
+    encrypted: true
+ });
+
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
