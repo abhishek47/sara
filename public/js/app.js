@@ -47491,10 +47491,8 @@ var render = function() {
             "a",
             {
               staticClass: "dropdown-item",
-              attrs: {
-                shape: "width: 300px;\nwhite-space: normal;",
-                href: notification.data.link
-              }
+              staticStyle: { width: "300px", "white-space": "normal" },
+              attrs: { href: notification.data.link }
             },
             [
               _vm._v("New Notification "),

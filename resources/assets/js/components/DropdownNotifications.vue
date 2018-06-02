@@ -9,7 +9,7 @@
                     <div class="dropdown-menu" style="width: 300px;
     white-space: normal;">
 
-                        <a  shape="width: 300px;
+                        <a  style="width: 300px;
     white-space: normal;" v-for="notification in notifications" :href="notification.data.link" class="dropdown-item" >New Notification <br> <span style="color: grey;" v-text="notification.data.message"></span></a>
 
                        
