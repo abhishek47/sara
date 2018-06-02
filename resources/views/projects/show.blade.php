@@ -205,11 +205,11 @@
 	      <div class="modal-body">
 	        <div class="form-group">
 	        	<label class="font-weight-bold">Member E-mail Id</label>
-	        	<input type="email" name="member_email" class="form-control">
+	        	<input type="email" required="" name="member_email" class="form-control">
 	        </div>
 	        <div class="form-group">
 	        	<label class="font-weight-bold">Member Role</label>
-	        	<input type="text" name="member_role" class="form-control">
+	        	<input type="text" required="" name="member_role" class="form-control">
 	        </div>
 	      </div>
 	      <div class="modal-footer">
@@ -245,17 +245,17 @@
 	        </div>
 	        <div class="form-group">
 	        	<label class="font-weight-bold">Task Title</label>
-	        	<input type="text" name="title" class="form-control">
+	        	<input type="text" name="title" required="" class="form-control">
 	        </div>
 
 	        <div class="form-group">
 	        	<label class="font-weight-bold">Task Description</label>
-	        	<textarea name="description" class="form-control"></textarea>
+	        	<textarea name="description" required="" class="form-control"></textarea>
 	        </div>
 
 	         <div class="form-group">
 	        	<label class="font-weight-bold">Task Deadline</label>
-	        	<input type="date" name="deadline" class="form-control">
+	        	<input type="date" name="deadline" required="" class="form-control">
 	        </div>
 
 	         <div class="form-group">

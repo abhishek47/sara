@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@index')->name('profile');
-
+Route::get('/timeline', 'HomeController@timeline')->name('timeline');
 
 Route::post('/projects', 'ProjectController@store')->name('project.store');
 Route::get('/projects/create', 'ProjectController@create')->name('project.create');

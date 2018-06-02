@@ -13807,17 +13807,27 @@ window.Vue = __webpack_require__(36);
 Vue.component('example-component', __webpack_require__(39));
 
 var app = new Vue({
-  el: '#app',
+    el: '#app',
 
-  methods: {
-    completeTask: function completeTask(id) {
-      $('#task-check-' + id).html('<i class="fa fa-check"></i>');
-    },
-    incompleteTask: function incompleteTask(id) {
-      $('#task-check-' + id).html('');
+    methods: {
+        completeTask: function completeTask(id) {
+            $('#task-check-' + id).html('<i class="fa fa-check"></i>');
+        },
+        incompleteTask: function incompleteTask(id) {
+            $('#task-check-' + id).html('');
+        }
     }
-  }
 });
+
+function flashy(message, link) {
+    var template = $($("#flashy-template").html());
+    $(".flashy").remove();
+    template.find(".flashy__body").html(message).attr("href", link || "#").end().appendTo("body").hide().fadeIn(300).delay(2800).animate({
+        marginRight: "-100%"
+    }, 300, "swing", function () {
+        $(this).remove();
+    });
+}
 
 /***/ }),
 /* 13 */

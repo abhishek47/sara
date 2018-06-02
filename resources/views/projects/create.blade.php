@@ -14,22 +14,22 @@
 			   {{ csrf_field() }}
 				<div class="form-group">
 					<label class="font-weight-bold">Project Title</label>
-					<input type="text" name="title" class="form-control" placeholder="Enter a descriptive project title">
+					<input type="text" name="title" class="form-control" required="" placeholder="Enter a descriptive project title">
 				</div>
 
 				<div class="form-group">
 					<label class="font-weight-bold">Project Descrition</label>
-					<textarea name="description" rows="3" class="form-control" placeholder="Describe your project "></textarea>
+					<textarea name="description" rows="3" class="form-control" required="" placeholder="Describe your project "></textarea>
 				</div>
 
 				<div class="form-group">
 					<label class="font-weight-bold">Project Starts on</label>
-					<input type="text" name="start_date" id="start_date" data-large-default="true" data-large-mode="true" data-modal="true" class="form-control" >
+					<input type="text" name="start_date" id="start_date" required="" data-large-default="true" data-large-mode="true" data-modal="true" class="form-control" >
 				</div>
 
 				<div class="form-group">
 					<label class="font-weight-bold">Project Deadline</label>
-					<input type="text" name="end_date" id="end_date" data-large-default="true" data-large-mode="true" data-modal="true" class="form-control" >
+					<input type="text" name="end_date" id="end_date" required="" data-large-default="true" data-large-mode="true" data-modal="true" class="form-control" >
 				</div>
 
 				<div class="form-group">

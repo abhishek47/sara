@@ -57,6 +57,9 @@ class ProjectUsersController extends Controller
         {
              ProjectUser::create([ 'project_id' => $project->id, 'user_id' => $user->id, 'assigner_id' => auth()->id(), 'role' => $request->get('member_role') ]);
 
+             $user->notify(new AddedToProject($project));
+
+
              flashy()->success( $user->name . ' is added to project.', '/project/' . $project->id);
         } else {
             flashy()->error( $request->get('member_email') . ' is not a valid user.');

@@ -41,7 +41,8 @@
                             <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                         @else
-                              <li><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+                            <dropdown-notifications :user="{{ auth()->user() }}"></dropdown-notifications>
+                            <li><a class="nav-link" href="{{ route('home') }}">Home</a></li>
 
                             <li><a class="nav-link" href="{{ route('project.create') }}">New Project</a></li>
                             <li class="nav-item dropdown">

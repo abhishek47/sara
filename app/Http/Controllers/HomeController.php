@@ -30,4 +30,10 @@ class HomeController extends Controller
 
         return view('home', compact('projects', 'assignedProjects'));
     }
+
+    public function timeline()
+    {
+        return view('profile.timeline');
+    }
+
 }
