@@ -47403,6 +47403,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -47479,14 +47481,20 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "dropdown-menu" },
+      {
+        staticClass: "dropdown-menu",
+        staticStyle: { width: "300px", "white-space": "normal" }
+      },
       [
         _vm._l(_vm.notifications, function(notification) {
           return _c(
             "a",
             {
               staticClass: "dropdown-item",
-              attrs: { href: notification.data.link }
+              attrs: {
+                shape: "width: 300px;\nwhite-space: normal;",
+                href: notification.data.link
+              }
             },
             [
               _vm._v("New Notification "),
