@@ -36,7 +36,7 @@ class NewTaskAssigned extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database', 'braodcast'];
+        return ['mail', 'database', 'broadcast'];
     }
 
     /**
