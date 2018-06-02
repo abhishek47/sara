@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     public function timeline()
     {
-        return view('profile.timeline');
+        return view('timeline');
     }
 
 }

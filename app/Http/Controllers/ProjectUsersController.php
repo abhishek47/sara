@@ -7,6 +7,7 @@ use App\Models\Task;
 use App\Models\ProjectUser;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Notifications\AddedToProject;
 
 class ProjectUsersController extends Controller
 {
