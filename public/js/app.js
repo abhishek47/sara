@@ -13805,6 +13805,8 @@ window.Vue = __webpack_require__(36);
  */
 
 Vue.component('example-component', __webpack_require__(39));
+Vue.component('user-notifications', __webpack_require__(48));
+Vue.component('dropdown-notifications', __webpack_require__(51));
 
 var app = new Vue({
   el: '#app',
@@ -47113,6 +47115,479 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(49)
+/* template */
+var __vue_template__ = __webpack_require__(50)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/UserNotifications.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c0045994", Component.options)
+  } else {
+    hotAPI.reload("data-v-c0045994", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: ['user', 'count'],
+
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+    data: function data() {
+        return { notifications: [] };
+    },
+    created: function created() {
+        var _this = this;
+
+        axios.get('/notifications/' + this.count).then(function (response) {
+            return _this.notifications = response.data;
+        });
+
+        Echo.private('App.User.' + this.user.id).notification(function (notification) {
+
+            console.log(notification);
+
+            var notificationElement = {};
+
+            notificationElement['data'] = notification;
+            notificationElement['created_at'] = moment().format();
+            notificationElement['new'] = 1;
+
+            _this.notifications.pop();
+
+            _this.notifications.unshift(notificationElement);
+        });
+    }
+});
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card card-shadow" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("span", {
+        staticClass: "badge success float-right",
+        domProps: { textContent: _vm._s(_vm.notifications.length) }
+      }),
+      _vm._v(" "),
+      _c("h3", { staticClass: "m-b-20 card-title font-bold" }, [
+        _vm._v("Recent Activity")
+      ]),
+      _vm._v(" "),
+      _vm.notifications.length
+        ? _c(
+            "div",
+            { staticClass: "streamline" },
+            _vm._l(_vm.notifications, function(notification) {
+              return _c("div", { staticClass: "sl-item b-info" }, [
+                _c("div", { staticClass: "sl-content" }, [
+                  _c("span", {
+                    staticClass: "sl-date text-muted",
+                    domProps: { textContent: _vm._s(notification.created_at) }
+                  }),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("a", {
+                      attrs: { href: notification.data.link },
+                      domProps: {
+                        textContent: _vm._s(notification.data.message)
+                      }
+                    })
+                  ])
+                ])
+              ])
+            })
+          )
+        : _c("div", [_c("p", [_vm._v("You have no recent activities.")])]),
+      _vm._v(" "),
+      _vm.notifications.length
+        ? _c(
+            "a",
+            {
+              staticClass: "mt-2 mb-2 btn btn-success btn-sm btn-block white",
+              attrs: { href: "/timeline" }
+            },
+            [_vm._v("View More")]
+          )
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c0045994", module.exports)
+  }
+}
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(52)
+/* template */
+var __vue_template__ = __webpack_require__(53)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DropdownNotifications.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-82ab71a0", Component.options)
+  } else {
+    hotAPI.reload("data-v-82ab71a0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: ['user'],
+
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+    data: function data() {
+        return { notifications: [], newNotis: 0 };
+    },
+    created: function created() {
+        var _this = this;
+
+        axios.get('/notifications/8').then(function (response) {
+            return _this.notifications = response.data;
+        });
+
+        Echo.private('App.User.' + this.user.id).notification(function (notification) {
+
+            console.log(notification);
+
+            var notificationElement = {};
+
+            notificationElement['data'] = notification;
+            notificationElement['created_at'] = moment().format();
+            notificationElement['new'] = 1;
+
+            _this.newNotis += 1;
+
+            playAlert();
+
+            //window.notie.alert({ type: 'success', text: notification.message, time: 7 , position: 'top'});
+
+            _this.notifications.unshift(notificationElement);
+
+            _this.flashy(notification.message, notification.link);
+        });
+    },
+    flashy: function flashy(message, link) {
+        var template = $($("#flashy-template").html());
+        $(".flashy").remove();
+        template.find(".flashy__body").html(message).attr("href", link || "#").end().appendTo("body").hide().fadeIn(300).delay(2800).animate({
+            marginRight: "-100%"
+        }, 300, "swing", function () {
+            $(this).remove();
+        });
+    }
+});
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("li", { staticClass: "nav-item dropdown" }, [
+    _c(
+      "a",
+      { staticClass: "nav-link px-3", attrs: { "data-toggle": "dropdown" } },
+      [
+        _c("i", { staticClass: "fa fa-bell text-white" }),
+        _vm._v(" "),
+        _vm.newNotis > 0
+          ? _c("span", {
+              staticClass: "badge badge-pill up danger",
+              domProps: { textContent: _vm._s(_vm.newNotis) }
+            })
+          : _vm._e()
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "dropdown-menu dropdown-menu-right w-md animate fadeIn mt-2 p-0"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "scrollable hover",
+            staticStyle: { "max-height": "250px" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "list" },
+              _vm._l(_vm.notifications, function(notification) {
+                return _c(
+                  "div",
+                  {
+                    staticClass: "list-item",
+                    class: notification.new == 1 ? "color-light-blue" : "",
+                    attrs: { "data-id": "item-11" }
+                  },
+                  [
+                    _c("div", { staticClass: "list-body" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "item-title _500",
+                          attrs: { href: notification.data.link }
+                        },
+                        [_vm._v("New Notification")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", {
+                        staticClass: "item-except text-sm text-muted h-1x",
+                        domProps: {
+                          textContent: _vm._s(notification.data.message)
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "item-tag tag hide" })
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0, true)
+                  ]
+                )
+              })
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex px-3 py-2 b-t" }, [
+          _c("div", { staticClass: "flex" }, [
+            _c("span", [
+              _c("i", {
+                domProps: { textContent: _vm._s(_vm.notifications.length) }
+              }),
+              _vm._v(" Notifications")
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("span", { staticClass: "item-date text-xs text-muted" }, [
+        _vm._v("16:00")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "/timeline" } }, [
+      _vm._v("See all "),
+      _c("i", { staticClass: "fa fa-angle-right text-muted" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-82ab71a0", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

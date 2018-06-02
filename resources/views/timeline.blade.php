@@ -12,7 +12,7 @@
         <hr>
 
             
-         <user-activity :count="0"></user-activity>
+         <user-notifications :count="0"></user-notifications>
               
 
 

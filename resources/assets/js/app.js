@@ -16,6 +16,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('user-notifications', require('./components/UserNotifications.vue'));
+Vue.component('dropdown-notifications', require('./components/DropdownNotifications.vue'));
 
 const app = new Vue({
     el: '#app',
