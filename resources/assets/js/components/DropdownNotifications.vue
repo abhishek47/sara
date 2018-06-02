@@ -6,7 +6,7 @@
 
                     <span class="badge badge-pill up danger" v-if="newNotis>0" v-text="newNotis"></span></a>
 
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" style="max-width: 200px;">
 
                         <a v-for="notification in notifications" :href="notification.data.link" class="dropdown-item" >New Notification <br> <span style="color: grey;" v-text="notification.data.message"></span></a>
 

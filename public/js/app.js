@@ -47479,7 +47479,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "dropdown-menu" },
+      { staticClass: "dropdown-menu", staticStyle: { "max-width": "200px" } },
       [
         _vm._l(_vm.notifications, function(notification) {
           return _c(
