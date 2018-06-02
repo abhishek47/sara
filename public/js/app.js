@@ -47297,18 +47297,7 @@ var render = function() {
               ])
             })
           )
-        : _c("div", [_c("p", [_vm._v("You have no recent activities.")])]),
-      _vm._v(" "),
-      _vm.notifications.length
-        ? _c(
-            "a",
-            {
-              staticClass: "mt-2 mb-2 btn btn-success btn-sm btn-block white",
-              attrs: { href: "/timeline" }
-            },
-            [_vm._v("View More")]
-          )
-        : _vm._e()
+        : _c("div", [_c("p", [_vm._v("You have no recent activities.")])])
     ])
   ])
 }
@@ -47375,22 +47364,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -47506,95 +47479,42 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      {
-        staticClass:
-          "dropdown-menu dropdown-menu-right w-md animate fadeIn mt-2 p-0"
-      },
+      { staticClass: "dropdown-menu" },
       [
-        _c(
-          "div",
-          {
-            staticClass: "scrollable hover",
-            staticStyle: { "max-height": "250px" }
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "list" },
-              _vm._l(_vm.notifications, function(notification) {
-                return _c(
-                  "div",
-                  {
-                    staticClass: "list-item",
-                    class: notification.new == 1 ? "color-light-blue" : "",
-                    attrs: { "data-id": "item-11" }
-                  },
-                  [
-                    _c("div", { staticClass: "list-body" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "item-title _500",
-                          attrs: { href: notification.data.link }
-                        },
-                        [_vm._v("New Notification")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass: "item-except text-sm text-muted h-1x",
-                        domProps: {
-                          textContent: _vm._s(notification.data.message)
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "item-tag tag hide" })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(0, true)
-                  ]
-                )
-              })
-            )
-          ]
-        ),
+        _vm._l(_vm.notifications, function(notification) {
+          return _c(
+            "a",
+            {
+              staticClass: "dropdown-item",
+              attrs: { href: notification.data.link }
+            },
+            [
+              _vm._v("New Notification "),
+              _c("br"),
+              _vm._v(" "),
+              _c("span", { staticStyle: { color: "grey" } }, [
+                _vm._v("{notification.data.message}")
+              ])
+            ]
+          )
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "d-flex px-3 py-2 b-t" }, [
-          _c("div", { staticClass: "flex" }, [
-            _c("span", [
-              _c("i", {
-                domProps: { textContent: _vm._s(_vm.notifications.length) }
-              }),
-              _vm._v(" Notifications")
-            ])
-          ]),
-          _vm._v(" "),
-          _vm._m(1)
-        ])
-      ]
+        _c(
+          "a",
+          { staticClass: "dropdown-item", attrs: { href: "/timeline" } },
+          [
+            _c("i", {
+              domProps: { textContent: _vm._s(_vm.notifications.length) }
+            }),
+            _vm._v(" Notifications")
+          ]
+        )
+      ],
+      2
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("span", { staticClass: "item-date text-xs text-muted" }, [
-        _vm._v("16:00")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "/timeline" } }, [
-      _vm._v("See all "),
-      _c("i", { staticClass: "fa fa-angle-right text-muted" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

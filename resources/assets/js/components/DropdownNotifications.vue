@@ -6,43 +6,27 @@
 
                     <span class="badge badge-pill up danger" v-if="newNotis>0" v-text="newNotis"></span></a>
 
-                    <div class="dropdown-menu dropdown-menu-right w-md animate fadeIn mt-2 p-0">
+                    <div class="dropdown-menu">
 
-                        <div class="scrollable hover" style="max-height: 250px">
+                        
 
-                            <div class="list">
 
-                                <div class="list-item" v-bind:class="notification.new == 1 ? 'color-light-blue' : ''" data-id="item-11" v-for="notification in notifications">
                                 
 
-                                    <div class="list-body">
+                                  
 
-                                    <a :href="notification.data.link" class="item-title _500" >New Notification</a>
+                                    <a v-for="notification in notifications" :href="notification.data.link" class="dropdown-item" >New Notification <br> <span style="color: grey;">{notification.data.message}</span></a>
 
-                                    <div class="item-except text-sm text-muted h-1x" v-text="notification.data.message"></div>
+                                   
 
-                                        <div class="item-tag tag hide"></div>
+                                   
 
-                                    </div>
-
-                                    <div>
-                                        <span class="item-date text-xs text-muted" >16:00</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
+                               
+                                     <a href="/timeline" class="dropdown-item"><i v-text="notifications.length"></i> Notifications</a>
+                           
                         </div>       
 
-                                <div class="d-flex px-3 py-2 b-t">
-
-                                <div class="flex">
-                                 <span><i v-text="notifications.length"></i> Notifications</span>
-                                </div>
-
-                                <a href="/timeline">See all <i class="fa fa-angle-right text-muted"></i></a>
-
-                                </div>
+                            
 
                            
                        

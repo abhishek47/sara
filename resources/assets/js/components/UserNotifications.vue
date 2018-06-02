@@ -22,7 +22,7 @@
                                 <p>You have no recent activities.</p>
                             </div>
 
-                            <a  v-if="notifications.length" href="/timeline" class="mt-2 mb-2 btn btn-success btn-sm btn-block white">View More</a>
+                            
                            </div>
                         </div>
                   
