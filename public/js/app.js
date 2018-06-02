@@ -47278,23 +47278,33 @@ var render = function() {
             "div",
             { staticClass: "streamline" },
             _vm._l(_vm.notifications, function(notification) {
-              return _c("div", { staticClass: "sl-item b-info" }, [
-                _c("div", { staticClass: "sl-content" }, [
-                  _c("span", {
-                    staticClass: "sl-date text-muted",
-                    domProps: { textContent: _vm._s(notification.created_at) }
-                  }),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("a", {
-                      attrs: { href: notification.data.link },
-                      domProps: {
-                        textContent: _vm._s(notification.data.message)
-                      }
-                    })
+              return _c(
+                "div",
+                {
+                  staticClass: "sl-item b-info",
+                  staticStyle: {
+                    "margin-bottom": "10px",
+                    "border-bottom": "1px solid #ccc"
+                  }
+                },
+                [
+                  _c("div", { staticClass: "sl-content" }, [
+                    _c("span", {
+                      staticClass: "sl-date text-muted",
+                      domProps: { textContent: _vm._s(notification.created_at) }
+                    }),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("a", {
+                        attrs: { href: notification.data.link },
+                        domProps: {
+                          textContent: _vm._s(notification.data.message)
+                        }
+                      })
+                    ])
                   ])
-                ])
-              ])
+                ]
+              )
             })
           )
         : _c("div", [_c("p", [_vm._v("You have no recent activities.")])])

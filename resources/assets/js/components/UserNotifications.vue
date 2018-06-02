@@ -8,7 +8,7 @@
                             <h3 class="m-b-20 card-title font-bold">Recent Activity</h3>
 
                             <div v-if="notifications.length" class="streamline">
-                                <div class="sl-item b-info" v-for="notification in notifications">
+                                <div class="sl-item b-info" style="margin-bottom: 10px;border-bottom: 1px solid #ccc;" v-for="notification in notifications">
                                     
                                     <div class="sl-content"><span class="sl-date text-muted" v-text="notification.created_at"></span>
                                         <div>
@@ -61,7 +61,7 @@
 
                      this.notifications.unshift(notificationElement);
 
-                     
+
 
 
                 });
