@@ -67,9 +67,8 @@
                   
                       @if(auth()->user()->id == $project->user_id)
                          <a href="/projects/{{ $project->id }}/destroy" class="btn btn-sm btn-outline-secondary">Discard</a>
-                      @else
-                         <a href="/projects/{{ $project->id }}/leave" class="btn btn-sm btn-outline-secondary">Leave</a>
                       @endif
+
                     </div>
                     <small class="text-muted">{{ $project->created_at->format('d M Y') }}</small>
                   </div>
@@ -115,8 +114,6 @@
                   
                       @if(auth()->user()->id == $project->user_id)
                          <a href="/projects/{{ $project->id }}/destroy" class="btn btn-sm btn-outline-secondary">Discard</a>
-                      @else
-                         <a href="/projects/{{ $project->id }}/leave" class="btn btn-sm btn-outline-secondary">Leave</a>
                       @endif
                     </div>
                     <small class="text-muted">{{ $project->created_at->format('d M Y') }}</small>
