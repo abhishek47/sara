@@ -63,7 +63,9 @@ class DependentTaskCompleted extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+              'message' => 'The task ' . $this->task->title . ' was completed. You can now perform the depending task.',
+            'link' => '/projects/' . $this->project->id,
+            'task_completed' => $this->taskCompleted
         ];
     }
 

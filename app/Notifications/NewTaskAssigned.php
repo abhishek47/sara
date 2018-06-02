@@ -64,7 +64,9 @@ class NewTaskAssigned extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+             'message' => 'A new task for project - "' . $this->project->title . ' was assigned to you."',
+            'link' => '/projects/' . $this->project->id . '',
+            'task' => $this->task
         ];
     }
 

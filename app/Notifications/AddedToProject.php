@@ -61,7 +61,8 @@ class AddedToProject extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'message' => 'You were added to a project - "' . $this->project->title .  '".',
+            'link' => '/projects/' . $this->project->id 
         ];
     }
 
