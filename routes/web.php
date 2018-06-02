@@ -51,3 +51,5 @@ Route::get('/tasks/{task}/toggle', 'TasksController@toggle');
 
 
 Route::get('/projects/{project}/tasks/{task}', 'TasksController@show');
+
+Route::get('/notifications/{count}', 'ProfileController@notifications')->name('notifications');

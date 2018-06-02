@@ -22,4 +22,15 @@ class ProfileController extends Controller
     {
     	return view('auth.profile');
     }
+
+     public function notifications($count = 0)
+     {
+        if($count == 0)
+        {
+         return auth()->user()->notifications;   
+        } else
+        {
+            return auth()->user()->notifications()->limit($count)->get();;  
+        }
+     }
 }
