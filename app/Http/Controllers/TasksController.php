@@ -7,6 +7,7 @@ use App\Models\Task;
 use App\Models\Project;
 use App\Models\ProjectUser;
 use Illuminate\Http\Request;
+use App\Notifications\NewTaskAssigned;
 
 class TasksController extends Controller
 {
