@@ -17,17 +17,15 @@ class NewTaskAssigned extends Notification
     use Queueable;
 
    public $project;
-   public $task;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Project $project, Task $task)
+    public function __construct(Project $project)
     {
         $this->project = $project;
-        $this->task = $task;
     }
 
     /**
@@ -65,8 +63,7 @@ class NewTaskAssigned extends Notification
     {
         return [
              'message' => 'A new task for project - "' . $this->project->title . ' was assigned to you."',
-            'link' => '/projects/' . $this->project->id . '',
-            'task' => $this->task
+             'link' => '/projects/' . $this->project->id ,
         ];
     }
 
@@ -81,8 +78,7 @@ class NewTaskAssigned extends Notification
     {
         return new BroadcastMessage([
              'message' => 'A new task for project - "' . $this->project->title . ' was assigned to you."',
-            'link' => '/projects/' . $this->project->id . '',
-            'task' => $this->task
+             'link' => '/projects/' . $this->project->id,
         ]);
     }
 }

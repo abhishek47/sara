@@ -68,12 +68,16 @@ class TasksController extends Controller
     {
         $data = $request->all();
 
+        $user = User::findOrFail($data['member_id']);
+
         $data['assigner_id'] = auth()->id();
         $data['project_id'] = $project->id;
 
         $project->tasks()->create($data);
 
         flashy()->success( 'You assigned a new task', '/project/' . $project->id);
+
+        $user->notify(new NewTaskAssigned($project));
 
         return back();
     }   
